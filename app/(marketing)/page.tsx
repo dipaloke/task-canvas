@@ -1,20 +1,31 @@
 import Link from "next/link";
-import localFont from "next/font/local"
+import localFont from "next/font/local";
+import { Poppins } from "next/font/google";
 import { Medal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-//IMPORTING 3rd party font
+//Initializing local and google party font
 
 const headingFont = localFont({
-    src: "../../public/fonts/font.woff2"
-})
+  src: "../../public/fonts/font.woff2",
+});
+
+const textFont = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const MarketingPage = () => {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className={cn("flex flex-col items-center justify-center", headingFont.className)}>
+      <div
+        className={cn(
+          "flex flex-col items-center justify-center",
+          headingFont.className
+        )}
+      >
         <div className="mb-4 flex it6ems-center border shadow-sm p-4 bg-amber-100 text-amber-700 rounded-full uppercase">
           <Medal className="h-6 w-6 mr-2" />
           No 1 task manager
@@ -27,16 +38,19 @@ const MarketingPage = () => {
           Work forward.
         </div>
       </div>
-      <div className="text-sm md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center mx-auto">
+      <div
+        className={cn(
+          "text-sm md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center mx-auto",
+          textFont.className
+        )}
+      >
         Collaborate, manage projects, reach new productivity peaks. From high
         rises to the home office, the way your team works is unique - accomplish
         it all with TaskCanvas.
       </div>
       {/* asChild is needed for the button to work with the next link */}
-      <Button className="mt-6" size='lg' asChild>
-        <Link href="/signup">
-            Get TaskCanvas for Free
-        </Link>
+      <Button className="mt-6" size="lg" asChild>
+        <Link href="/signup">Get TaskCanvas for Free</Link>
       </Button>
     </div>
   );
