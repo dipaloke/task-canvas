@@ -35,10 +35,31 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# TaskCanvas
+# TaskCanvas (Trello Clone)
 
-A full stack application with Next-14, Typescript, Tailwind-CSS, [Shadcn-UI](https://ui.shadcn.com/docs/installation/next),
+A full stack application with Next-14.
 
+Key Features:
+- Auth
+- Organizations / Workspaces
+- Board creation
+- Unsplash API for random beautiful cover images
+- Activity log for entire organization
+- Board rename and delete
+- List creation
+- List rename, delete, drag & drop reorder and copy
+- Card creation
+- Card description, rename, delete, drag & drop reorder and copy
+- Card activity log
+- Board limit for every organization
+- Stripe subscription for each organization to unlock unlimited boards
+- Landing page
+- MySQL DB
+- Prisma ORM
+- [shadcnUI](https://ui.shadcn.com/docs/installation/next) & TailwindCSS
+
+Fonts:
+- [cal-sans](https://github.com/calcom/font)
 
 # Packages:
-ShadeCn(Component library), 
+ShadeCn(Component library),
