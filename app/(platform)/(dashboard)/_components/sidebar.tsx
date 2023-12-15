@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
 
+import { NavItem, organization } from "./nav-item";
+
 interface SidebarProps {
   stoarageKey?: string;
 }
@@ -79,11 +81,11 @@ export const Sidebar = ({ stoarageKey = "t-sidebar-state" }: SidebarProps) => {
         className="space-y-2"
       >
         {userMemberships.data.map(({organization}) => (
-          <navItem
+          <NavItem
            key = {organization.id}
            isActive = {activeOrganization?.id === organization.id}
            isExpanded = {expanded[organization.id]}
-           organization = {organization}
+           organization = {organization as organization}
            onExpand = {onExpand}
           />
         ))}
