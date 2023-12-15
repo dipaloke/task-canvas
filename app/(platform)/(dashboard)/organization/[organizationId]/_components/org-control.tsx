@@ -1,5 +1,7 @@
 "use client"
 
+//Here is the logic for changing org directly from URL. 
+
 import { useOrganizationList } from "@clerk/nextjs";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";

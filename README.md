@@ -62,4 +62,7 @@ Fonts:
 - [cal-sans](https://github.com/calcom/font)
 
 # Packages:
-ShadeCn(Component library), [Clerk Auth](https://clerk.com/solutions/nextjs-authentication), 
+- ShadeCn(Component library) -- button, skeleton, accordion, separator,
+- [Clerk Auth](https://clerk.com/solutions/nextjs-authentication)
+- [usehooks-ts](https://usehooks-ts.com/)
+-
