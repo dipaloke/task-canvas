@@ -14,13 +14,13 @@ import { Accordion } from "@/components/ui/accordion";
 import { NavItem, organization } from "./nav-item";
 
 interface SidebarProps {
-  stoarageKey?: string;
+  storageKey?: string;
 }
 
-export const Sidebar = ({ stoarageKey = "t-sidebar-state" }: SidebarProps) => {
+export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
   // state is going to be connected to our local storage which will keep track which accordion is extended which is not.
   const [expanded,  setExpanded] = useLocalStorage<Record<string, any>>(
-    stoarageKey,
+    storageKey,
     {}
   );
 
