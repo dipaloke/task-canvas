@@ -17,7 +17,7 @@ Key Features:
 - Board limit for every organization
 - Stripe subscription for each organization to unlock unlimited boards
 - Landing page
-- MySQL DB
+- MySQL DB -- app.planetscale.com 
 - Prisma ORM
 - [shadcnUI](https://ui.shadcn.com/docs/installation/next) & TailwindCSS
 
@@ -30,4 +30,4 @@ Fonts:
 - [usehooks-ts](https://usehooks-ts.com/) --- collection of hooks
 - [Zustand](https://github.com/pmndrs/zustand) --- state-management
 - [Prisma](https://www.prisma.io/docs/getting-started) --- ORM
-- 
+-
