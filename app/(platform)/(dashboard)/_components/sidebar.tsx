@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { useLocalStorage } from "usehooks-ts";
@@ -11,22 +10,21 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
 
-import { NavItem, organization } from "./nav-item";
+import { NavItem, Organization } from "./nav-item";
 
 interface SidebarProps {
   storageKey?: string;
 }
 
 export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
-  // state is going to be connected to our local storage which will keep track which accordion is extended which is not.
-  const [expanded,  setExpanded] = useLocalStorage<Record<string, any>>(
+   // state is going to be connected to our local storage which will keep track which accordion is extended which is not.
+  const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
     storageKey,
     {}
   );
 
   const { organization: activeOrganization, isLoaded: isLoadedOrg } =
     useOrganization();
-
   const { userMemberships, isLoaded: isLoadedOrgList } = useOrganizationList({
     userMemberships: {
       infinite: true,
@@ -41,6 +39,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
       if (expanded[key]) {
         acc.push(key);
       }
+
       return acc;
     },
     []
@@ -53,13 +52,24 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     }));
   };
 
+    //loading state
+
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
     return (
       <>
-        <Skeleton />
+        <div className="flex items-center justify-between mb-2">
+          <Skeleton className="h-10 w-[50%]" />
+          <Skeleton className="h-10 w-10" />
+        </div>
+        <div className="space-y-2">
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
       </>
     );
   }
+
   return (
     <>
       <div className="font-medium text-xs flex items-center mb-1">
@@ -70,23 +80,24 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
           size="icon"
           variant="ghost"
           className="ml-auto"
-        />
-        <Link href="/select-org">
-          <Plus className="h-4 w-4" />
-        </Link>
+        >
+          <Link href="/select-org">
+            <Plus className="h-4 w-4" />
+          </Link>
+        </Button>
       </div>
       <Accordion
         type="multiple"
         defaultValue={defaultAccordionValue}
         className="space-y-2"
       >
-        {userMemberships.data.map(({organization}) => (
+        {userMemberships.data.map(({ organization }) => (
           <NavItem
-           key = {organization.id}
-           isActive = {activeOrganization?.id === organization.id}
-           isExpanded = {expanded[organization.id]}
-           organization = {organization as organization}
-           onExpand = {onExpand}
+            key={organization.id}
+            isActive={activeOrganization?.id === organization.id}
+            isExpanded={expanded[organization.id]}
+            organization={organization as Organization}
+            onExpand={onExpand}
           />
         ))}
       </Accordion>
