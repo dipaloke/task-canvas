@@ -20,7 +20,7 @@ export const FormInput = ({ errors }: FormInputProps) => {
         name="title"
         required
         placeholder="Enter a board title"
-        disabled={pending}
+        disabled={pending} 
       />
       {/* //Showing the error in client */}
       {errors?.title ? (
