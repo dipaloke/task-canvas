@@ -21,13 +21,13 @@ Key Features:
 - Prisma ORM
 - [shadcnUI](https://ui.shadcn.com/docs/installation/next) & TailwindCSS
 - Includes Next 14 Server actions features.(No api route. But we keep the actions in separate folder)
--  
+-
 
 Fonts:
 - [cal-sans](https://github.com/calcom/font)
 
 # Packages:
-- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input,
+- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label
 - [Clerk Auth](https://clerk.com/solutions/nextjs-authentication)
 - [usehooks-ts](https://usehooks-ts.com/) --- collection of hooks
 - [Zustand](https://github.com/pmndrs/zustand) --- state-management
