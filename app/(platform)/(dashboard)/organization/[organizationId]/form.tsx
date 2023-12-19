@@ -3,23 +3,17 @@
 import { createBoard } from "@/actions/create-board";
 import { useAction } from "@/hooks/use-action";
 import { FormInput } from "@/components/form/form-input";
-
-import { FormButton } from "./form-button";
+import { FormSubmit } from "@/components/form/form-submit";
 
 export const Form = () => {
   const { execute, fieldErrors } = useAction(createBoard, {
-    onSuccess: (data) => {
-      console.log(data, "SUCCESS!");
-    },
+    onSuccess: (data) => {},
     onError: (error) => {
       console.error(error);
     },
   });
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
-
-    console.log({ title });
-
     execute({ title });
   };
 
@@ -28,7 +22,7 @@ export const Form = () => {
       <div className="flex flex-col space-y-2">
         <FormInput label="Board Title" id="title" errors={fieldErrors} />
       </div>
-      <FormButton />
+      <FormSubmit>Save</FormSubmit>
     </form>
   );
 };
