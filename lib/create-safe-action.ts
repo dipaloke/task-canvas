@@ -13,7 +13,7 @@ export type FieldErrors<T> = {
 export type ActionState<TInput, TOutput> = {
   fieldErrors?: FieldErrors<TInput>; // obj of errors
   error?: string | null; // server error
-  data?: TOutput; //prisma data type
+  data?: TOutput; // result: prisma data type
 };
 
 // safeAction will receive input and output which will have a schema, handler with validatedData which gives a promise with actionState.
