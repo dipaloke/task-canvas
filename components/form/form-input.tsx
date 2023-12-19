@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
+import { FormErrors } from "./form-errors";
+
 interface FromInputProps {
   id: string;
   label?: string;
@@ -46,7 +48,7 @@ export const FormInput = forwardRef<HTMLInputElement, FromInputProps>(
               htmlFor={id}
               className="text-xm font-semibold text-neutral-700"
             >
-              Label
+              {label}
             </Label>
           ) : null}
           <Input
@@ -63,6 +65,7 @@ export const FormInput = forwardRef<HTMLInputElement, FromInputProps>(
             aria-describedby={`${id}-error`}
           />
         </div>
+        <FormErrors id={id} errors={errors} />
       </div>
     );
   }
