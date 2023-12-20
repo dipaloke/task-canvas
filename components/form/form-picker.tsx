@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
-import { Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { useState, useEffect } from "react";
 
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
+
+import { defaultImages } from "@/constants/images";
 
 interface FormPickerProps {
   id: string;
@@ -17,7 +20,8 @@ interface FormPickerProps {
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
   const { pending } = useFormStatus();
 
-  const [images, setImages] = useState<Array<Record<string, any>>>([]);
+  const [images, setImages] =
+    useState<Array<Record<string, any>>>(defaultImages);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState(null);
 
@@ -38,7 +42,8 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
         }
       } catch (error) {
         console.error({ error });
-        setImages([]);
+        //If something goes wrong we are going to use the fallback(default) images
+        setImages(defaultImages);
       } finally {
         setIsLoading(false);
       }
@@ -69,11 +74,26 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
             }}
           >
             <Image
-            src={image.urls.thumb}
-            alt="Unsplash Image"
-            className="object-cover rounded-sm"
-            fill
+              src={image.urls.thumb}
+              alt="Unsplash Image"
+              className="object-cover rounded-sm"
+              fill
             />
+
+            {/* Image section functionality */}
+            {selectedImageId === image.id && (
+              <div className="absolute inset-y-0 h-full w-full bg-black/30 flex items-center justify-center">
+                <Check className="h-4 w-4 text-white" />
+              </div>
+            )}
+
+            <Link
+              href={image.links.html}
+              target="_blank"
+              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[10px] truncate text-white hover:underline p-1 bg-black/50"
+            >
+              {image.user.name}
+            </Link>
           </div>
         ))}
       </div>
