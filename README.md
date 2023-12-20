@@ -27,7 +27,7 @@ Fonts:
 - [cal-sans](https://github.com/calcom/font)
 
 # Packages:
-- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label
+- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label, tooltip, 
 - [Clerk Auth](https://clerk.com/solutions/nextjs-authentication)
 - [usehooks-ts](https://usehooks-ts.com/) --- collection of hooks
 - [Zustand](https://github.com/pmndrs/zustand) --- state-management
