@@ -1,6 +1,6 @@
 # TaskCanvas (Trello Clone)
 
-A full stack application with Next-14.
+A full stack application with **Next-14 & TypeScript**.
 
 Key Features:
 - Auth
@@ -27,10 +27,10 @@ Fonts:
 - [cal-sans](https://github.com/calcom/font)
 
 # Packages:
-- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label, tooltip, popover, 
+- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label, tooltip, popover,
 - [Clerk Auth](https://clerk.com/solutions/nextjs-authentication)
 - [usehooks-ts](https://usehooks-ts.com/) --- collection of hooks
 - [Zustand](https://github.com/pmndrs/zustand) --- state-management
 - [Prisma](https://www.prisma.io/docs/getting-started) --- ORM
 - [Zod](https://zod.dev/) --- schema validation
--
+- [Sonner](https://emilkowal.ski/ui/building-a-toast-component) --- opinionated toast component
