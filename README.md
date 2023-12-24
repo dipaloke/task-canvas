@@ -35,4 +35,4 @@ Fonts:
 - [Zod](https://zod.dev/) --- schema validation
 - [Sonner](https://emilkowal.ski/ui/building-a-toast-component) --- opinionated toast component
 - [unsplash-js](https://www.npmjs.com/package/unsplash-js) --- Javascript wrapper for the Unsplash API. For BG img fallbacks (constants/images.ts)
--
+- [Lodash](https://lodash.com/) --- JavaScript utility library
