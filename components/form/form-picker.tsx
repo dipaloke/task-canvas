@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 
 import { defaultImages } from "@/constants/images";
 
+import { FormErrors } from "./form-errors";
+
 interface FormPickerProps {
   id: string;
   errors?: Record<string, string[] | undefined>;
@@ -73,6 +75,19 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               setSelectedImageId(image.id);
             }}
           >
+            {/* hidden input field  for after selecting specific image.
+             This field is necessary to get the image info while submitting this form. */}
+
+            <input
+              type="radio"
+              id={id}
+              name={id}
+              className="hidden"
+              checked={selectedImageId === image.id}
+              disabled={pending}
+              value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+            />
+
             <Image
               src={image.urls.thumb}
               alt="Unsplash Image"
@@ -80,7 +95,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               fill
             />
 
-            {/* Image section functionality */}
+            {/* Image section functionality. white check in the middle of img */}
             {selectedImageId === image.id && (
               <div className="absolute inset-y-0 h-full w-full bg-black/30 flex items-center justify-center">
                 <Check className="h-4 w-4 text-white" />
@@ -97,6 +112,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
           </div>
         ))}
       </div>
+      <FormErrors id="image" errors={errors} />
     </div>
   );
 };
