@@ -39,3 +39,5 @@ Icons:
 - [Sonner](https://emilkowal.ski/ui/building-a-toast-component) --- opinionated toast component
 - [unsplash-js](https://www.npmjs.com/package/unsplash-js) --- Javascript wrapper for the Unsplash API. For BG img fallbacks (constants/images.ts)
 - [Lodash](https://lodash.com/) --- JavaScript utility library
+- [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd) --- Beautiful and accessible drag and drop for lists
+
