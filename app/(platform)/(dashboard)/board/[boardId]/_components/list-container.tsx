@@ -1,9 +1,16 @@
 "use client";
 
+import { toast } from "sonner";
+
 import { useEffect, useState } from "react";
 import { Droppable, DragDropContext } from "@hello-pangea/dnd";
 
 import { ListWithCards } from "@/types";
+
+import { useAction } from "@/hooks/use-action";
+import { updateListOrder } from "@/actions/update-list-order";
+
+import { updateCardOrder } from "@/actions/update-card-order";
 
 import { ListForm } from "./list-form";
 import { ListItem } from "./list-item";
@@ -26,6 +33,26 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 export const ListContainer = ({ data, boardId }: ListContainerProps) => {
   //storing the lists locally to add drag and drop feature.(we first change locally then the database)
   const [orderedData, setOrderedData] = useState(data);
+
+  //Using the updateListOrder action
+  const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success("List reordered");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
+  //Using the updateCardOrder action
+  const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+    onSuccess: () => {
+      toast.success("Card reordered");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
 
   useEffect(() => {
     setOrderedData(data);
@@ -54,7 +81,8 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
       setOrderedData(items);
 
-      //TODO: Trigger server action.
+      //Trigger server action.
+      executeUpdateListOrder({ items, boardId });
     }
 
     // if user moves a card
@@ -102,7 +130,12 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
         setOrderedData(newOrderedData);
 
-        //TODO: Trigger server action
+        //Trigger server action
+        executeUpdateCardOrder({
+          boardId: boardId,
+          items: reorderedCards,
+        });
+
         //USer moves the card to another list
       } else {
         //Remove card from source list
@@ -120,12 +153,16 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
         //Update the order for each card in the destination list
         destList.cards.forEach((card, idx) => {
-          card.order = idx
+          card.order = idx;
         });
 
-        setOrderedData(newOrderedData)
+        setOrderedData(newOrderedData);
 
-        //TODO: Trigger Server Action
+        //Trigger Server Action
+        executeUpdateCardOrder({
+          boardId: boardId,
+          items: destList.cards,
+        });
       }
     }
   };
