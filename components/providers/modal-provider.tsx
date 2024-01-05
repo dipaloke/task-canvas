@@ -14,6 +14,7 @@ export const ModalProvider = () => {
     if(!isMounted) {
         return null
     }
+    //protection end
 
   return (
     <>

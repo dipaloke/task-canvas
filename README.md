@@ -40,3 +40,4 @@ Icons:
 - [unsplash-js](https://www.npmjs.com/package/unsplash-js) --- Javascript wrapper for the Unsplash API. For BG img fallbacks (constants/images.ts)
 - [Lodash](https://lodash.com/) --- JavaScript utility library
 - [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd) --- Beautiful and accessible drag and drop for lists
+- [TanStack Query](https://tanstack.com/query/v4) --- asynchronous state management (query to fetch card/item data)
