@@ -30,7 +30,7 @@ Icons:
 - lucide-react
 
 # Packages:
-- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label, tooltip, popover, textarea, dialog
+- ShadeCn(Component library) -- button, skeleton, accordion, separator, sheet, input, label, tooltip, popover, textarea, dialog, avatar
 - [Clerk Auth](https://clerk.com/solutions/nextjs-authentication)
 - [usehooks-ts](https://usehooks-ts.com/) --- collection of hooks
 - [Zustand](https://github.com/pmndrs/zustand) --- state-management
@@ -41,3 +41,4 @@ Icons:
 - [Lodash](https://lodash.com/) --- JavaScript utility library
 - [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd) --- Beautiful and accessible drag and drop for lists
 - [TanStack Query](https://tanstack.com/query/v4) --- asynchronous state management (query to fetch card/item data)
+- [date-fns](https://github.com/date-fns/date-fns#readme) --- toolset for manipulating JavaScript dates in a browser & Node.js

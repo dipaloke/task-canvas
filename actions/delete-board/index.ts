@@ -8,8 +8,10 @@ import { db } from "@/lib/db";
 import { InputType, ReturnType } from "./types";
 
 import { createSafeAction } from "@/lib/create-safe-action";
-import { DeleteBoard} from "./schema";
+import { DeleteBoard } from "./schema";
 import { redirect } from "next/navigation";
+import { createAuditLog } from "@/lib/create-audit-log";
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -28,7 +30,14 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       where: {
         id,
         orgId, //only user who created the org can update the board
-      }
+      },
+    });
+    //create the log
+    await createAuditLog({
+      entityId: board.id,
+      entityTitle: board.title,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.DELETE,
     });
   } catch (error) {
     return {
@@ -38,7 +47,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   //refresh the page and redirect  to org id page
   revalidatePath(`/organization/${orgId}`);
-  redirect(`/organization/${orgId}`)
+  redirect(`/organization/${orgId}`);
 };
 
 export const deleteBoard = createSafeAction(DeleteBoard, handler);
