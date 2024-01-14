@@ -14,9 +14,12 @@ import { createAuditLog } from "@/lib/create-audit-log";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 import { decreaseAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
+
+  const isPro = await checkSubscription();
 
   if (!userId || !orgId) {
     return {
@@ -35,9 +38,11 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    //increases the count of board by 1 if a board is deleted
-    
-    await decreaseAvailableCount();
+    //if not subscribed increases the count of board by 1 if a board is deleted
+
+    if (!isPro) {
+      await decreaseAvailableCount();
+    }
 
     //create the log
     await createAuditLog({
