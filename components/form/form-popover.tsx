@@ -21,6 +21,7 @@ import { createBoard } from "@/actions/create-board";
 import { FormInput } from "./form-input";
 import { FormSubmit } from "./form-submit";
 import { FormPicker } from "./form-picker";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -35,7 +36,8 @@ export const FormPopover = ({
   align,
   sideOffset = 0,
 }: FormPopoverProps) => {
-  const router = useRouter()
+  const proModal = useProModal();
+  const router = useRouter();
   // functionality to auto close the form popup after successful creation of a board. useRef
   const closeRef = useRef<ElementRef<"button">>(null);
 
@@ -43,10 +45,11 @@ export const FormPopover = ({
     onSuccess: (data) => {
       toast.success("Board Created!");
       closeRef.current?.click();
-      router.push(`/board/${data.id}`)
+      router.push(`/board/${data.id}`);
     },
     onError: (error) => {
       toast.error(error);
+      proModal.onOpen();
     },
   });
 

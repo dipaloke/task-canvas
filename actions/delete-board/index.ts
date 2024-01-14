@@ -36,6 +36,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
 
     //increases the count of board by 1 if a board is deleted
+    
     await decreaseAvailableCount();
 
     //create the log

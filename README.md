@@ -42,3 +42,4 @@ Icons:
 - [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd) --- Beautiful and accessible drag and drop for lists
 - [TanStack Query](https://tanstack.com/query/v4) --- asynchronous state management (query to fetch card/item data)
 - [date-fns](https://github.com/date-fns/date-fns#readme) --- toolset for manipulating JavaScript dates in a browser & Node.js
+- [stripe](https://stripe.com/docs/js) ---  Node.js library for the Stripe payment API.
