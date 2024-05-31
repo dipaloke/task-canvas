@@ -1,6 +1,6 @@
 "use client"
 
-//Here is the logic for changing org directly from URL. 
+//Here is the logic for changing org directly from URL.
 
 import { useOrganizationList } from "@clerk/nextjs";
 import { useParams } from "next/navigation";
@@ -16,6 +16,6 @@ export const OrgControl = () => {
     setActive({
       organization: params.organizationId as string,
     });
-  }, [setActive, params.OrganizationId]);
+  }, [setActive, (params.organizationId)]);
   return null;
 };
