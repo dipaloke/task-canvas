@@ -9,7 +9,7 @@ import { ListContainer } from "./_components/list-container";
 interface BoardIdPageProps {
   params: {
     boardId: string;
-  };
+  }; 
 }
 
 const BoardIdPage = async ({ params }: BoardIdPageProps) => {
